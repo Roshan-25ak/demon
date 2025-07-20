@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Demon Slayer</title>
+  <style>
+    body {
+      background-color: #121212;
+      font-family: Arial, sans-serif;
+      color: #fff;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      width: 80%;
+      margin: 30px auto;
+      text-align: center;
+      background-color: #1e1e1e;
+      border-radius: 10px;
+      padding: 30px;
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.05);
+     
+    }
+    .container h1 {
+  color: red;
+}
+
+
+    .movie-poster {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeSlide 1s ease forwards;
+    }
+
+    @keyframes fadeSlide {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .download-btn {
+      background-color: #00c853;
+      color: white;
+      padding: 25px 30px;
+      border: none;
+      border-radius: 8px;
+      font-size: 18px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.3s ease;
+      display: inline-block;
+      margin-top: 20px;
+    }
+
+    .download-btn:hover {
+      background-color: #f30606;
+    }
+
+    h1 {
+      margin-top: 40px;
+      text-align: center;
+    }
+
+    video {
+      width: 100%;
+      max-width: 1080px;
+      margin: 20px auto;
+      display: block;
+      border-radius: 10px;
+    }
+
+    /* Slider */
+    .slider-container {
+      position: relative;
+      width: 90%;
+      margin: 40px auto;
+      overflow: hidden;
+    }
+
+    .slider {
+      display: flex;
+      transition: transform 0.5s ease-in-out;
+    }
+
+    .slide {
+      min-width: 100%;
+      box-sizing: border-box;
+      padding: 10px;
+    }
+
+    .slide img {
+      width: 100%;
+      height: auto;
+      border-radius: 10px;
+    }
+
+    .arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: rgba(0, 0, 0, 0.5);
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      cursor: pointer;
+      font-size: 24px;
+      z-index: 1;
+    }
+
+    .arrow.left {
+      left: 10px;
+    }
+
+    .arrow.right {
+      right: 10px;
+    }
+.rating-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 30px;
+}
+
+.rating-button {
+  background-color: #e2df0f;
+  color: rgb(15, 15, 15);
+  border: none;
+  padding: 12px 25px;
+  border-radius: 30px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.rating-button:hover {
+  background-color: #3411d3;
+}
+
+/* Show content on hover */
+.rating-container:hover .rating-content {
+  display: block;
+}
+
+/* Hidden by default */
+.rating-content {
+  display: none;
+  margin-top: 15px;
+  background-color: #0cb1e4;
+  padding: 15px;
+  border-radius: 10px;
+  color: white;
+  text-align: center;
+}
+
+  
+/* Show on hover or focus (tap for mobile) */
+.rating-container:hover .rating-content,
+.rating-button:focus + .rating-content {
+  display: block;
+}
+
+.stars {
+  font-size: 24px;
+  color: gold;
+  margin: 10px 0;
+}
+
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>DEMON SLAYER - INFINITY CASTLE MOVIE</h1>
+    <img src="infinity.jpg" alt="Movie Poster" class="movie-poster" />
+    <p>JUST FOR 30 Rs</P>
+    <a href="https://payments.cashfree.com/forms/demon-slayer" class="download-btn" target="_blank">Download Now</a>
+
+    <h1>Trailer</h1>
+    <video controls>
+      <source src="trailer.mp4" type="video/mp4" />
+      Your browser does not support the video tag.
+    </video>
+  </div>
+
+  <!-- Image Slider -->
+   <h1>IMAGES</h1>
+  <div class="slider-container">
+    <button class="arrow left" onclick="prevSlide()">❮</button>
+    <div class="slider" id="slider">
+      <div class="slide"><img src="kna.png" alt="Slide 1" /></div>
+      <div class="slide"><img src="zen.png" alt="Slide 2" /></div>
+      <div class="slide"><img src="akaza.jpg" alt="Slide 3" /></div>
+      <div class="slide"><img src="group.jpg" alt="Slide 3" /></div>
+    </div>
+    <button class="arrow right" onclick="nextSlide()">❯</button>
+   
+    <div class="rating-container">
+  <button class="rating-button">⭐ IMDb Rating ⭐</button>
+  <div class="rating-content">
+           <p> DEMON SLAYER - INFINITY CASTLE MOVIE</p>
+      <p><strong>Genre:</strong> Action | Sci-Fi | Adventure</p>
+      <p><strong>Rating:</strong> ⭐ 9.4/10 (IMDb)</p>
+      <p><strong>Description:</strong> The Demon Slayer Corps are drawn into the Infinity Castle, where Tanjiro, Nezuko, and the Hashira face terrifying Upper Rank demons in a desperate fight as the final battle against Muzan Kibutsuji begins.</p>
+   
+    </div>
+  </div>
+</div>
+
+  </div>
+
+  <script>
+    const slider = document.getElementById("slider");
+    const slides = document.querySelectorAll(".slide");
+    let index = 0;
+
+    function showSlide(i) {
+      index = (i + slides.length) % slides.length;
+      slider.style.transform = `translateX(${-index * 100}%)`;
+    }
+
+    function nextSlide() {
+      showSlide(index + 1);
+    }
+
+    function prevSlide() {
+      showSlide(index - 1);
+    }
+
+    setInterval(nextSlide, 4000); // auto slide every 3s
+  </script>
+</body>
+</html>
